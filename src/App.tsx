@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import {FormEvent, useState} from 'react'
 import './App.css'
-import {ParamEditor} from "./components/ParamEditor";
+import ParamEditor from "./components/ParamEditor";
 import Param from "./types/Param";
 import Model from "./types/Model";
 
@@ -20,18 +20,17 @@ function App() {
       ]
   })
 
-  function handleParamEdit(e, id) {
+  function onParamEdit(e: FormEvent, id: number) {
     setModel({ paramValues: model.paramValues.map((paramValue) => {
         if (paramValue.paramId === id) {
           return { ...paramValue, value: e.target.value }
         }
         return paramValue
       })})
-    console.log(model);
   }
 
   return (
-    <ParamEditor params={params} model={model} handleParamEdit={handleParamEdit} />
+    <ParamEditor params={params} model={model} onParamEdit={onParamEdit} />
   )
 }
 
