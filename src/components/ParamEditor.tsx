@@ -11,8 +11,8 @@ class ParamEditor extends Component<Props, any> {
     public getModel(): Model {
         return this.props.model;
     }
-    handleParamEdit(e: FormEvent, id: number) {
-        this.props.onParamEdit(e, id);
+    async handleParamEdit(e: FormEvent, id: number) {
+        await this.props.onParamEdit(e, id);
         console.log(this.getModel())
     }
     render() {
